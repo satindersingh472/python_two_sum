@@ -1,20 +1,15 @@
 
-from dbhelpers import conn_exe_close
-from apihelpers import verify_endpoints_info, add_for_patch
-from flask import Flask, request, make_response
-import json
-import dbcreds
+import itertools
 
-app = Flask(__name__)
 
-if(dbcreds.production_mode == True):
-    import bjoern #type: ignore
-    bjoern.run(app,'0.0.0.0',5000)
-    print('Running in PRODUCTION MODE')
-else:
-    from flask_cors import CORS
-    CORS(app)
-    print('Running in TESTING MODE')
-    app.run(debug=True)
+def find_two_sum(list,target):
+    for numbers in itertools.combinations(list,2):
+        if sum(numbers) == target:
+            print([list.index(number) for number in numbers])
+
+list = [1,2,3,4,5]
+target = 8
+find_two_sum(list,target)
+
 
 
