@@ -1,5 +1,6 @@
 
 import itertools
+from operator import indexOf
 
 
 def find_two_sum(list,target):
@@ -9,7 +10,12 @@ def find_two_sum(list,target):
 
 list = [1,2,3,4,5]
 target = 8
-find_two_sum(list,target)
-
-
-
+def find_sums(list,target):
+    for num1 in list:
+        for num2 in list:
+            if num1 + num2 == target:
+                index1 = list.index(num1)
+                index2 = list.index(num2)
+                return([index1,index2])
+            
+print(find_sums(list,target))
